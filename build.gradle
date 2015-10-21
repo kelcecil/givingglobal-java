@@ -33,8 +33,11 @@ repositories {
 // In this section you declare the dependencies for your production and test code
 dependencies {
     compile 'com.google.guava:guava:18.0'
-    compile 'io.fastjson:boon:0.24'
     compile 'args4j:args4j:2.0.29'
+
+    compile 'com.google.http-client:google-http-client:1.20.0'
+    compile 'com.google.http-client:google-http-client-gson:1.20.0'
 
     testCompile "junit:junit:4.11"
 }
+

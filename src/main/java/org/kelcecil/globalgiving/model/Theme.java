@@ -1,5 +1,7 @@
 package org.kelcecil.globalgiving.model;
 
+import com.google.api.client.util.Key;
+
 /**
  * Created by kelcecil on 10/21/15.
  */
@@ -12,6 +14,7 @@ public class Theme {
         this.id = id;
     }
 
+    @Key
     private String id;
 
     public String getName() {
@@ -22,5 +25,6 @@ public class Theme {
         this.name = name;
     }
 
+    @Key
     private String name;
 }
