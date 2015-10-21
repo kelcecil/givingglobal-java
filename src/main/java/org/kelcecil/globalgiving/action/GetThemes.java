@@ -1,11 +1,8 @@
 package org.kelcecil.globalgiving.action;
 
-import com.google.api.client.http.*;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.JsonObjectParser;
-import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.client.http.GenericUrl;
 import org.kelcecil.globalgiving.apikey.EnvironmentApiKeyProvider;
+import org.kelcecil.globalgiving.http.HttpClient;
 import org.kelcecil.globalgiving.model.Theme;
 import org.kelcecil.globalgiving.model.wrappers.ThemeWrapper;
 
@@ -17,32 +14,20 @@ import java.util.List;
  */
 public class GetThemes {
 
-    static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
-    static final JsonFactory JSON_FACTORY = new GsonFactory();
-    static final HttpRequestFactory REQUEST_FACTORY =
-            HTTP_TRANSPORT.createRequestFactory(new HttpRequestInitializer() {
-                @Override
-                public void initialize(HttpRequest request) {
-                    request.setParser(new JsonObjectParser(JSON_FACTORY));
-                }
-            });
+    private final String ENDPOINT = "https://api.globalgiving.org/api/public/projectservice/themes";
 
     public GetThemes() {}
 
     public List<Theme> Call() {
-        GenericUrl url = new GenericUrl("https://api.globalgiving.org/api/public/projectservice/themes");
+        GenericUrl url = new GenericUrl(ENDPOINT);
         url.set("api_key", new EnvironmentApiKeyProvider().ObtainApiKey());
 
         List<Theme> themes = null;
         try {
-            HttpRequest request = REQUEST_FACTORY.buildGetRequest(url);
-            HttpHeaders headers = new HttpHeaders()
-                    .setAccept("application/json")
-                    .setContentType("application/json");
-            request.setHeaders(headers);
-            HttpResponse response = request.execute();
-            ThemeWrapper parsedResponse = (ThemeWrapper)response.parseAs(ThemeWrapper.class);
-            themes = parsedResponse.getThemes();
+            ThemeWrapper response =
+                    ((ThemeWrapper)new HttpClient()
+                            .PerformGet(url, ThemeWrapper.class));
+            themes = response.getThemes();
         }
         catch (IOException e) {
             System.out.println(e.getMessage());
