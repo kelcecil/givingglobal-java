@@ -4,7 +4,7 @@ import com.google.api.client.http.GenericUrl;
 import org.kelcecil.globalgiving.apikey.EnvironmentApiKeyProvider;
 import org.kelcecil.globalgiving.http.HttpClient;
 import org.kelcecil.globalgiving.model.Theme;
-import org.kelcecil.globalgiving.model.wrappers.ThemeWrapper;
+import org.kelcecil.globalgiving.model.wrappers.ThemesWrapper;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,9 +24,9 @@ public class GetThemes {
 
         List<Theme> themes = null;
         try {
-            ThemeWrapper response =
-                    ((ThemeWrapper)new HttpClient()
-                            .PerformGet(url, ThemeWrapper.class));
+            ThemesWrapper response =
+                    ((ThemesWrapper) new HttpClient()
+                            .PerformGet(url, ThemesWrapper.class));
             themes = response.getThemes();
         }
         catch (IOException e) {
