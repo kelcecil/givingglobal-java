@@ -1,12 +1,14 @@
 package org.kelcecil.globalgiving.model;
 
-import com.google.api.client.util.Key;
 import org.kelcecil.globalgiving.model.wrappers.ProjectWrapper;
 
 /**
  * Created by kelcecil on 10/21/15.
  */
-public class Theme {
+public class Project {
+
+    private String id;
+
     public String getId() {
         return id;
     }
@@ -15,21 +17,7 @@ public class Theme {
         this.id = id;
     }
 
-    @Key
-    private String id;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Key
-    private String name;
-
-    @Key
+    // Possible included project information
     private ProjectWrapper projects;
-
 }
+

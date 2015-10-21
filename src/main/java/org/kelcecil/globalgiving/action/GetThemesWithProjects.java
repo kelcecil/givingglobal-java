@@ -13,10 +13,9 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Constructs a GET request to pass on to the http client.
+ * Created by kelcecil on 10/21/15.
  */
-public class GetThemes {
-
+public class GetThemesWithProjects {
     static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
     static final JsonFactory JSON_FACTORY = new GsonFactory();
     static final HttpRequestFactory REQUEST_FACTORY =
@@ -27,10 +26,10 @@ public class GetThemes {
                 }
             });
 
-    public GetThemes() {}
+    public GetThemesWithProjects() {}
 
     public List<Theme> Call() {
-        GenericUrl url = new GenericUrl("https://api.globalgiving.org/api/public/projectservice/themes");
+        GenericUrl url = new GenericUrl("https://api.globalgiving.org/api/public/projectservice/themes/projects/ids");
         url.set("api_key", new EnvironmentApiKeyProvider().ObtainApiKey());
 
         List<Theme> themes = null;
