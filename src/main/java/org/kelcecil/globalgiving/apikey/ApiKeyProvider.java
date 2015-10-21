@@ -6,5 +6,5 @@ package org.kelcecil.globalgiving.apikey;
  * would like.
  */
 public interface ApiKeyProvider {
-    public String ObtainAPIKey();
+    public String ObtainApiKey();
 }
