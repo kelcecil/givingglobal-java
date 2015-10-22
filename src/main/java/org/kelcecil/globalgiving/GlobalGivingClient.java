@@ -1,7 +1,9 @@
 package org.kelcecil.globalgiving;
 
+import org.kelcecil.globalgiving.action.GetOrganization;
 import org.kelcecil.globalgiving.action.GetThemes;
 import org.kelcecil.globalgiving.action.GetThemesWithProjects;
+import org.kelcecil.globalgiving.model.Organization;
 import org.kelcecil.globalgiving.model.Theme;
 
 import java.util.List;
@@ -27,5 +29,9 @@ public class GlobalGivingClient {
 
     public List<Theme> getThemesWithProjects() {
         return new GetThemesWithProjects().Call();
+    }
+
+    public Organization getOrganization(int organizationId) {
+        return new GetOrganization().Call(organizationId);
     }
 }

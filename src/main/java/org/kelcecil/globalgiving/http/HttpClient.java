@@ -5,7 +5,6 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.gson.GsonFactory;
-import org.kelcecil.globalgiving.model.wrappers.ThemeWrapper;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -34,11 +33,9 @@ public class HttpClient {
             response = request.execute();
         } catch (IOException e) {
             throw e;
-        } finally {
-            response.disconnect();
         }
 
-        return response.parseAs(ThemeWrapper.class);
+        return response.parseAs(type);
     }
 
     public HttpRequest setHttpHeadersOnRequest(HttpRequest request) {
