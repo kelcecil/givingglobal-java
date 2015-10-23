@@ -11,24 +11,24 @@ import java.util.List;
 public class ProjectWrapper {
 
     @Key
-    private String hasNext;
+    private boolean hasNext;
 
-    public String getHasNext() {
+    public boolean getHasNext() {
         return hasNext;
     }
 
-    public void setHasNext(String hasNext) {
+    public void setHasNext(boolean hasNext) {
         this.hasNext = hasNext;
     }
 
     @Key
-    private String nextProjectId;
+    private int nextProjectId;
 
-    public String getNextProjectId() {
+    public int getNextProjectId() {
         return nextProjectId;
     }
 
-    public void setNextProjectId(String nextProjectId) {
+    public void setNextProjectId(int nextProjectId) {
         this.nextProjectId = nextProjectId;
     }
 
