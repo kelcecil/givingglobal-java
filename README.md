@@ -8,6 +8,7 @@ No guarantees are made to the stability of this library yet.
 * GetOrganization
 * GetThemes
 * GetThemesWithProjects
+* GetAllProjects (partially)
 
 ## Usage
 
